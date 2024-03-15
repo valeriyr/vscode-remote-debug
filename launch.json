@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "custom",
+            "name": "Remote LLDB",
+            // Create debug target.
+            "targetCreateCommands": ["target create $APPLICATION_LOCAL_PATH"],
+            // Attach the debuggee process.
+            "processCreateCommands": ["gdb-remote localhost:$DEBUGGER_PORT"],
+            // Source path remapping is helpful in cases when program's source code is located in a different directory.
+            "sourceMap": { "$DOCKER_REPO_MOUNT_ROOT": "$LOCAL_REPO_ROOT" }
+        }
+    ]
+}
